@@ -37,10 +37,24 @@ async function main() {
 
         console.log("EXECUTE")
         console.log(`✅ Script executed successfully!`);
-        console.log(scriptResult);
-        console.log(newApiResult);
+        console.log({ scriptResult });
+        console.log({ newApiResult });
         console.log("-------------------\n")
 
+    } catch (err) {
+        console.error(err);
+    }
+
+
+    // Here you can see that returning a String works as intended as well
+    try{
+        const stringCode = `
+            pub fun main(): String {
+                return "Hello, Cadence!"
+            }
+        `;
+        const stringResult = await executeScript({ code: stringCode });
+        console.log({ stringResult });
     } catch (err) {
         console.error(err);
     }
